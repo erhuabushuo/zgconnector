@@ -6,11 +6,11 @@
 
 ## 依赖
 
-**Python 3.7**
+**Python 3.6**
 
 ## 安装
 
-    python3.7 -m venv venv
+    python3.6 -m venv venv
     source venv/bin/active
     python setup install
     wlconnector
