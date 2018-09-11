@@ -14,6 +14,7 @@ class Server:
         :param cfg: 配置项
         """
         self.cfg = cfg
+        self.token = cfg.get('general', 'token')
         self.protocols = {}
         self.server_address = (cfg.get('general', 'listen_ip'), cfg.getint('general', 'listen_port'))
         self.expiration_time = cfg.getint('general', 'expiration_time')

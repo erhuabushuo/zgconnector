@@ -35,7 +35,7 @@ async def heartbeat(protocol):
     }
     await protocol.server.redis.execute('setex', redis_key, protocol.server.expiration_time, json.dumps(redis_value))
 
-    packet = Packet(protocol.packet.ver, from_, from_, Cmd.REPLY, 0)
+    packet = Packet(protocol.packet.ver, protocol.server.token, from_, from_, Cmd.REPLY, 0)
     pack = packet.pack()
     protocol.transport.write(pack)
 

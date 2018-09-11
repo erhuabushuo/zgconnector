@@ -33,6 +33,9 @@ class Protocol(asyncio.Protocol):
                     self.state = State.INIT
                     self.transport.close()
                     return
+                if self.packet.token != self.server.token:
+                    logging.debug(f"invalid token: {self.packet.token}")
+                    self.transport.close()
                 logging.debug(f"cmd: {self.packet.cmd} from {self.packet.from_} to {self.packet.to}")
                 self.state = State.REQUEST
             if self.state == State.REQUEST:

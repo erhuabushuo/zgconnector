@@ -17,7 +17,7 @@ async def transfer(protocol):
         to_protocol.transport.write(pack)
     except OfflineException:
         body = f"{protocol.packet.to} is offline!".encode('utf-8')
-        packet = Packet(protocol.packet.ver, protocol.packet.from_, protocol.packet.to, Cmd.ERROR, len(body))
+        packet = Packet(protocol.packet.ver, protocol.server.token, protocol.packet.from_, protocol.packet.to, Cmd.ERROR, len(body))
         pack = packet.pack()
         protocol.transport.write(pack)
         protocol.transport.write(body)

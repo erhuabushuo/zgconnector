@@ -9,6 +9,7 @@ class TestProtocol(unittest.TestCase):
     def setUp(self):
         self.transportMock = Mock()
         self.serverMock = Mock()
+        self.serverMock.token = 'abcdef'
         self.protocol = Protocol(self.serverMock)
         self.protocol.connection_made(self.transportMock)
 
@@ -19,11 +20,14 @@ class TestProtocol(unittest.TestCase):
         :param mock_commands:
         :return:
         """
-        packet = Packet(1, 'abc', 'abc', Cmd.HEARTBEAT, 0)
+        packet = Packet(1, 'abcdef', 'abc', 'abc', Cmd.HEARTBEAT, 0)
         pack = packet.pack()
         self.protocol.data_received(pack)
+        # 测试Token一致
+        self.assertEqual(packet.token, self.serverMock.token)
 
         mock_commands.get.assert_called_with(Cmd.HEARTBEAT)
+
 
     @patch('wlconnector.protocol.commands')
     @patch('wlconnector.protocol.transfer')
@@ -33,7 +37,7 @@ class TestProtocol(unittest.TestCase):
         :param mock_commands:
         :return:
         """
-        packet = Packet(1, 'abc', 'efc', 10, 0)
+        packet = Packet(1, 'abcdef','abc', 'efc', 10, 0)
         pack = packet.pack()
         mock_commands.get.return_value = None
         self.protocol.data_received(pack)
