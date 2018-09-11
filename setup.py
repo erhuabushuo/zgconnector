@@ -26,6 +26,7 @@ setup(
         'Operating System :: POSIX',
         'Operating System :: MacOS',
         'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.6',
         'Topic :: Communications',
         'Topic :: Internet'
     ],
