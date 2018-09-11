@@ -1,5 +1,7 @@
 # wlconnector
 
+[![Build Status](https://www.travis-ci.org/erhuabushuo/wlconnector.svg?branch=master)](https://www.travis-ci.org/erhuabushuo/wlconnector)
+
 旺龙设备通信服务器，采用异步协程自定义协议的高性能TCP通信服务器
 
 ## 依赖
