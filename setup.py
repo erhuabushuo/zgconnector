@@ -12,9 +12,9 @@ setup(
     packages=find_packages(exclude=['tests']),
     include_package_data=True,
     platforms='all',
-    data_files=[
-        ('/etc', ['wlconnector.ini'])
-    ],
+    # data_files=[
+    #     ('/etc', ['wlconnector.ini'])
+    # ],
     install_requires=[
         'uvloop',
         'aioredis',
