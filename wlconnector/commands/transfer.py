@@ -1,3 +1,4 @@
+import time
 
 from wlconnector.packet import Packet
 from wlconnector.cmd import Cmd
@@ -12,6 +13,10 @@ async def transfer(protocol):
     packet = Packet(protocol.packet.ver, protocol.packet.from_, protocol.packet.to, protocol.packet.cmd, protocol.packet.length)
     packet.body = protocol.packet.body
     pack = packet.pack()
+
+    protocol.server.protocols[protocol.packet.from_] = protocol
+    protocol.heartbeat_at = time.time()
+
     try:
         to_protocol = protocol.server.protocols[protocol.packet.to]
         to_protocol.transport.write(pack)
@@ -21,5 +26,6 @@ async def transfer(protocol):
         pack = packet.pack()
         protocol.transport.write(pack)
         protocol.transport.write(body)
+        protocol.transport.close()
 
 
