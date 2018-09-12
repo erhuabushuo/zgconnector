@@ -8,7 +8,7 @@ from wlconnector.state import State
 from wlconnector.packet import Packet, PACKET_SIZE
 
 SERVER_ADDRESS = ('localhost', 9700)
-FMT = "!h40s40shL"
+FMT = "!h6s40s40shL"
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -35,12 +35,12 @@ class EchoClient(asyncio.Protocol):
             'connectiong to {} port {}'.format(*self.address)
         )
 
-        self.message = struct.pack(FMT, 1, b"abc", b"abc", 1, 1)
+        self.message = struct.pack(FMT, 1, "abcdef", b"abc", b"abc", 1, 1)
         transport.write(self.message)
         transport.write(b'p')
         self.log.debug('sending {!r}'.format(self.message))
 
-        self.message = struct.pack(FMT, 1, b"abc", b"efg", 10, 1)
+        self.message = struct.pack(FMT, 1, "abcdef", b"abc", b"efg", 10, 1)
         transport.write(self.message)
         transport.write(b'a')
         self.log.debug('sending {!r}'.format(self.message))
