@@ -30,7 +30,7 @@ async def heartbeat(protocol):
         'uid': from_,
         'ver': protocol.packet.ver,
         'client_address': protocol.transport.get_extra_info('peername'),
-        'server_address': protocol.server.server_address,
+        'server_address': protocol.server.conn_ip,
 
     }
     await protocol.server.redis.execute('setex', redis_key, protocol.server.expiration_time, json.dumps(redis_value))
