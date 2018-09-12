@@ -6,7 +6,7 @@ from wlconnector.cmd import Cmd
 +---------+---------+----------+----------+---------+---------+----------------+
 | Ver     | Token   | From     | To       | Cmd     | Length  | Body           |
 +---------+---------+----------+----------+---------+---------+----------------+
-| 2 bytes | 6 bytes | 20 bytes | 20 bytes | 2 bytes | 4 bytes | N length bytes |
+| 2 bytes | 6 bytes | 40 bytes | 40 bytes | 2 bytes | 4 bytes | N length bytes |
 +---------+---------+----------+----------+---------+---------+----------------+
 """
 
