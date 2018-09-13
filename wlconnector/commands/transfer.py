@@ -10,7 +10,7 @@ async def transfer(protocol):
     :param protocol: Protocol
     :return:
     """
-    packet = Packet(protocol.packet.ver, protocol.packet.from_, protocol.packet.to, protocol.packet.cmd, protocol.packet.length)
+    packet = Packet(protocol.packet.ver, protocol.server.token, protocol.packet.from_, protocol.packet.to, protocol.packet.cmd, protocol.packet.length)
     packet.body = protocol.packet.body
     pack = packet.pack()
 
