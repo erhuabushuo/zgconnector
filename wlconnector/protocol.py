@@ -44,7 +44,6 @@ class Protocol(asyncio.Protocol):
                 msg, self._buffer = self._buffer[:self.packet.length], self._buffer[self.packet.length:]
                 self.packet.body = msg
                 logging.debug(f"content: {self.packet.body}")
-                logging.debug(commands)
                 command = commands.get(self.packet.cmd) or transfer
                 self.server.loop.create_task(command(self))
                 self.state = State.INIT
