@@ -57,6 +57,6 @@ class Protocol(asyncio.Protocol):
     def connection_lost(self, exc):
         try:
             del self.server.protocols[self.packet.from_]
-        except IndexError:
+        except KeyError:
             pass
         super().connection_lost(exc)
