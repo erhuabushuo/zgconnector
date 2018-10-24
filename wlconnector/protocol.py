@@ -58,8 +58,5 @@ class Protocol(asyncio.Protocol):
             logging.debug(f"got connection lost from {self.packet.from_}")
         except Exception:
             pass
-        try:
-            del self.server.protocols[self.packet.from_]
-        except Exception:
-            pass
+
         super().connection_lost(exc)
