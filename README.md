@@ -1,8 +1,8 @@
-# wlconnector
+# zgconnector
 
 [![Build Status](https://www.travis-ci.org/erhuabushuo/wlconnector.svg?branch=master)](https://www.travis-ci.org/erhuabushuo/wlconnector)
 
-旺龙设备通信服务器，采用异步协程自定义协议的高性能TCP通信服务器
+智国设备通信服务器，采用异步协程自定义协议的高性能TCP通信服务器
 
 ## 依赖
 
@@ -17,7 +17,7 @@
 
 ## 配置
 
-查看配置文件 **/etc/wlconnector.ini**
+查看配置文件 **/etc/zgconnector.ini**
 
 ## 包格式
 

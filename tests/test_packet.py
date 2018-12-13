@@ -1,7 +1,7 @@
 import unittest
 
-from wlconnector.packet import Packet, PACKET_SIZE
-from wlconnector.cmd import Cmd
+from zgconnector.packet import Packet, PACKET_SIZE
+from zgconnector.cmd import Cmd
 
 
 class TestPacket(unittest.TestCase):

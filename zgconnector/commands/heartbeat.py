@@ -2,8 +2,8 @@ import logging
 import time
 import json
 
-from wlconnector.packet import Packet
-from wlconnector.cmd import Cmd
+from zgconnector.packet import Packet
+from zgconnector.cmd import Cmd
 
 async def heartbeat(protocol):
     """

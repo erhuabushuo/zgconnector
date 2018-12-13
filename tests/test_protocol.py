@@ -1,9 +1,9 @@
 import unittest
 from unittest.mock import Mock, patch
 
-from wlconnector.protocol import Protocol
-from wlconnector.packet import Packet
-from wlconnector.cmd import Cmd
+from zgconnector.protocol import Protocol
+from zgconnector.packet import Packet
+from zgconnector.cmd import Cmd
 
 class TestProtocol(unittest.TestCase):
     def setUp(self):
@@ -13,7 +13,7 @@ class TestProtocol(unittest.TestCase):
         self.protocol = Protocol(self.serverMock)
         self.protocol.connection_made(self.transportMock)
 
-    @patch('wlconnector.protocol.commands')
+    @patch('zgconnector.protocol.commands')
     def test_heartbeat(self, mock_commands):
         """
         测试心跳包
@@ -29,8 +29,8 @@ class TestProtocol(unittest.TestCase):
         mock_commands.get.assert_called_with(Cmd.HEARTBEAT)
 
 
-    @patch('wlconnector.protocol.commands')
-    @patch('wlconnector.protocol.transfer')
+    @patch('zgconnector.protocol.commands')
+    @patch('zgconnector.protocol.transfer')
     def test_transfer(self, mock_transfer, mock_commands):
         """
         测试消息转发

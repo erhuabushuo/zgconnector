@@ -3,18 +3,17 @@ import configparser
 import logging
 import warnings
 
+import click
 
-from wlconnector.server import Server
+from zgconnector.server import Server
 
 
-def main():
-    cfg_file_path = '/etc/wlconnector.ini'
-    if len(sys.argv) > 1:
-        cfg_file_path = sys.argv[1]
-
-    # load config file
+@click.command()
+@click.argument('config_path', default='/etc/zgconnector.ini')
+def cli(config_path):
+    """智国TCP通信服务器"""
     cfg = configparser.ConfigParser()
-    cfg.read(cfg_file_path)
+    cfg.read(config_path)
 
     is_debug = cfg.getboolean('general', 'debug')
 
@@ -33,4 +32,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    cli()

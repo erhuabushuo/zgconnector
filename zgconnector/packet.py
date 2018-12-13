@@ -1,6 +1,6 @@
 import struct
 
-from wlconnector.cmd import Cmd
+from zgconnector.cmd import Cmd
 
 """
 +---------+---------+----------+----------+---------+---------+----------------+

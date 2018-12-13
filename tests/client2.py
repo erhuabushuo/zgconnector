@@ -4,9 +4,9 @@ import logging
 import sys
 import struct
 
-from wlconnector.packet import Packet
+from zgconnector.packet import Packet
 
-SERVER_ADDRESS = ('localhost', 9700)
+SERVER_ADDRESS = ('192.168.1.19', 9700)
 FMT = "!h6s40s40shL"
 
 logging.basicConfig(

@@ -1,8 +1,8 @@
 import time
 
-from wlconnector.packet import Packet
-from wlconnector.cmd import Cmd
-from wlconnector.exceptions import OfflineException
+from zgconnector.packet import Packet
+from zgconnector.cmd import Cmd
+from zgconnector.exceptions import OfflineException
 
 async def transfer(protocol):
     """

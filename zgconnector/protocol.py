@@ -2,10 +2,10 @@ import asyncio
 import logging
 import time
 
-from wlconnector.state import State
-from wlconnector.packet import Packet, PACKET_SIZE
-from wlconnector.commands import commands, transfer
-from wlconnector.exceptions import PacketException
+from zgconnector.state import State
+from zgconnector.packet import Packet, PACKET_SIZE
+from zgconnector.commands import commands, transfer
+from zgconnector.exceptions import PacketException
 
 
 class Protocol(asyncio.Protocol):
@@ -36,7 +36,7 @@ class Protocol(asyncio.Protocol):
                 if self.packet.token != self.server.token:
                     logging.debug(f"invalid token: {self.packet.token}")
                     self.transport.close()
-                logging.debug(f"cmd: {self.packet.cmd} from {self.packet.from_} to {self.packet.to}")
+                logging.debug(f"cmd: {self.packet.cmd} from {self.packet.from_} to {self.packet.to}, length {self.packet.length}")
                 self.state = State.REQUEST
             if self.state == State.REQUEST:
                 if len(self._buffer) < self.packet.length:

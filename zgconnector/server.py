@@ -4,7 +4,7 @@ import asyncio
 import uvloop
 import aioredis
 
-from wlconnector.protocol import Protocol
+from zgconnector.protocol import Protocol
 
 
 class Server:
