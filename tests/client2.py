@@ -32,9 +32,8 @@ class EchoClient(asyncio.Protocol):
             'connectiong to {} port {}'.format(*self.address)
         )
 
-        self.message = struct.pack(FMT, 1, b"abcdef", b"efg", b"efg", 1, 1)
+        self.message = struct.pack(FMT, 1, b"abcdef", 1, b"9400799145100c29068f", b"9400799145100c29068f", 1, 0)
         transport.write(self.message)
-        transport.write(b'p')
         self.log.debug('sending {!r}'.format(self.message))
 
 

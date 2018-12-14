@@ -2,7 +2,6 @@ import time
 
 from zgconnector.packet import Packet
 from zgconnector.cmd import Cmd
-from zgconnector.exceptions import OfflineException
 
 async def transfer(protocol):
     """
@@ -10,7 +9,7 @@ async def transfer(protocol):
     :param protocol: Protocol
     :return:
     """
-    packet = Packet(protocol.packet.ver, protocol.server.token, protocol.packet.from_, protocol.packet.to, protocol.packet.cmd, protocol.packet.length)
+    packet = Packet(protocol.packet.ver, protocol.server.token, protocol.packet.app_id, protocol.packet.from_, protocol.packet.to, protocol.packet.cmd, protocol.packet.length)
     packet.body = protocol.packet.body
     pack = packet.pack()
 
@@ -21,9 +20,9 @@ async def transfer(protocol):
         to_protocol = protocol.server.protocols[protocol.packet.to]
         to_protocol.transport.write(pack)
         to_protocol.transport.write(packet.body)
-    except OfflineException:
+    except KeyError:
         body = f"{protocol.packet.to} is offline!".encode('utf-8')
-        packet = Packet(protocol.packet.ver, protocol.server.token, protocol.packet.from_, protocol.packet.to, Cmd.ERROR, len(body))
+        packet = Packet(protocol.packet.ver, protocol.server.token, protocol.packet.app_id, protocol.packet.from_, protocol.packet.to, Cmd.ERROR, len(body))
         pack = packet.pack()
         protocol.transport.write(pack)
         protocol.transport.write(body)

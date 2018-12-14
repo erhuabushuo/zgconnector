@@ -26,7 +26,6 @@ def cli(config_path):
     if is_debug:
         warnings.simplefilter('always', ResourceWarning)
 
-    # now starting server
     server = Server(cfg, is_debug)
     server.run()
 
