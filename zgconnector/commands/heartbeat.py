@@ -48,6 +48,7 @@ async def heartbeat(protocol):
         packet = Packet(protocol.packet.ver, protocol.server.token, protocol.packet.app_id, from_, from_, Cmd.AD, 0)
         pack = packet.pack()
         protocol.transport.write(pack)
+        logging.debug(f"sending {packet.cmd} to {packet.to}")
 
 
 
